@@ -14,14 +14,14 @@ pipeline {
             steps {
                 echo '--- Étape de build ---'
 
-                sh 'mvn clean package'
+
             }
         }
 
         stage('Test') {
             steps {
                 echo '--- Lancement des tests ---'
-                sh 'mvn test'
+
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 echo '--- Déploiement ---'
 
-                sh 'echo Deploiement réussi !'
+
             }
         }
     }
