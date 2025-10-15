@@ -5,7 +5,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo '--- Clonage du dépôt Git ---'
-                git branch: 'main', url: 'https://github.com/ton-utilisateur/ton-projet.git'
+               git branch: 'main', url: 'https://github.com/chmaryem/devops-app.git'
+
             }
         }
 
