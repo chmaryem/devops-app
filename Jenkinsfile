@@ -35,7 +35,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
                     steps {
-                        withSonarQubeEnv('SonarQubeServer') {
+                        withSonarQubeEnv('devops') {
                             bat 'mvn sonar:sonar -Dsonar.projectKey=devops-app'
                         }
                     }
