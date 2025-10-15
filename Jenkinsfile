@@ -32,6 +32,14 @@ pipeline {
 
             }
         }
+
+        stage('SonarQube Analysis') {
+                    steps {
+                        withSonarQubeEnv('SonarQubeServer') {
+                            bat 'mvn sonar:sonar -Dsonar.projectKey=devops-app'
+                        }
+                    }
+                }
     }
 
     post {
