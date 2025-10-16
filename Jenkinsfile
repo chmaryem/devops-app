@@ -31,7 +31,8 @@ pipeline {
             steps {
                 echo '--- Analyse SonarQube ---'
                 withSonarQubeEnv('devops') {
-                    sh 'sonar-scanner -Dsonar.projectKey=devops -Dsonar.sources=.'
+
+                    bat 'sonar-scanner -Dsonar.projectKey=devops -Dsonar.sources=.'
                 }
             }
         }
