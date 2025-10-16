@@ -27,15 +27,14 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                echo '--- Analyse SonarQube ---'
-                withSonarQubeEnv('devops') {
 
-                    bat 'sonar-scanner -Dsonar.projectKey=devops -Dsonar.sources=.'
+        stage('SonarQube Analysis') {
+                    steps {
+                        withSonarQubeEnv('devops') {  // Nom exact de ton installation
+                            bat 'mvn sonar:sonar'
+                        }
+                    }
                 }
-            }
-        }
 
 
     }
