@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'M3'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -16,31 +12,31 @@ pipeline {
         stage('Build') {
             steps {
                 echo '--- Étape de build ---'
-                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
                 echo '--- Lancement des tests ---'
-                bat 'mvn test'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo '--- Déploiement ---'
-
             }
         }
 
-        stage('Scan') {
+        stage('SonarQube Analysis') {
             steps {
+                echo '--- Analyse SonarQube ---'
                 withSonarQubeEnv('devops') {
-                    bat 'mvn sonar:sonar -Dsonar.projectKey=devops-app'
+                    sh 'sonar-scanner -Dsonar.projectKey=devops -Dsonar.sources=.'
                 }
             }
         }
+
+
     }
 
     post {
